@@ -1,2 +1,3 @@
 class Account < ActiveRecord::Base
-end
+	has_many :account_entries
+end	
