@@ -16,6 +16,6 @@
     a.about =  Faker::Company.catch_phrase
     a.type = 'Customer'
     a.employees = (rand * 90).to_i
-
+    
     a.save
 end
