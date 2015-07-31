@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150730232205) do
+ActiveRecord::Schema.define(version: 20150731152106) do
 
   create_table "account_entries", force: :cascade do |t|
     t.float    "time",        limit: 24
@@ -29,6 +29,20 @@ ActiveRecord::Schema.define(version: 20150730232205) do
     t.string   "about",      limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "employees_projects", id: false, force: :cascade do |t|
+    t.integer "employee_id", limit: 4
+    t.integer "project_id",  limit: 4
+  end
+
+  add_index "employees_projects", ["employee_id", "project_id"], name: "index_employees_projects_on_employee_id_and_project_id", using: :btree
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.integer  "customer_id", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
 end
