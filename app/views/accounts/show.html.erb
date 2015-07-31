@@ -1,11 +1,16 @@
-<h1><% @account.name %></h1>
+<h1><%= @account.name %></h1>
+
+Total Hours: <%= @account.account_entries.sum(:time) %><br />
+Total Cost: $<%= (@account.account_entries.map &:cost).sum.round %>
 
 <h4>Account Entries</h4>
 
 <table>
-	<% @accounts.account_entries.each do |entry| %>
+	<% @account.account_entries.each do |entry| %>
 	<tr>
-		<td><%= entry.inspect %></td>
+		<td><%= entry.created_at %></td>
+		<td><%= entry.employee.name %></td>
+		<td><%= entry.time %> hours</td>
 	</tr>
 	<% end %>
 </table>

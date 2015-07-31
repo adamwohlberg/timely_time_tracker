@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   # root 'welcome#index'
 
   resources :accounts
+  resources :employees do
+    resources :time_entries
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
